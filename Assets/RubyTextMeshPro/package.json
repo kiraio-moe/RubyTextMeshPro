@@ -1,0 +1,34 @@
+{
+    "name": "com.jp-netsis.rubytextmeshpro",
+    "version": "1.1.1",
+    "displayName": "RubyTextMeshPro",
+    "description": "RubyTextMeshPro is a plugin to add ruby tag in Unity TextMeshPro to support Kanji writing.",
+    "unity": "2019.1",
+    "unityRelease": "0b5",
+    "documentationUrl": "https://github.com/kiraio-moe/RubyTextMeshPro#how-to-use",
+    "changelogUrl": "https://github.com/kiraio-moe/RubyTextMeshPro/blob/main/CHANGELOG.md",
+    "licensesUrl": "https://github.com/kiraio-moe/RubyTextMeshPro/blob/main/LICENSE",
+    "dependencies": {
+        "com.unity.textmeshpro": "3.0.6"
+    },
+    "keywords": [
+        "furigana",
+        "kanji",
+        "ruby",
+        "rubytextmeshpro",
+        "textmeshpro"
+    ],
+    "author": {
+        "name": "jp-netsis",
+        "url": "https://github.com/jp-netsis"
+    },
+    "type": "library",
+    "category": "Text Rendering",
+    "samples": [
+        {
+            "displayName": "RubyTextMeshPro Demo",
+            "description": "Demo contains RubyTextMeshPro examples usage.",
+            "path": "Samples/Demo"
+        }
+    ]
+}

@@ -1,51 +1,40 @@
-![Example](https://github.com/jp-netsis/RubyTextMeshPro/blob/main/Screenshots/ruby.png)
+# Ruby (Furigana) TextMeshPro
 
-# Ruby(Furigana) Text Mesh Pro
+![RubyTextMeshPro Example](https://github.com/jp-netsis/RubyTextMeshPro/blob/main/Screenshots/ruby.png)
 
-TextMeshProに振り仮名(ふりがな、フリガナ、ルビ)タグを追加します。
+RubyTextMeshPro is a plugin to add ruby tags to Unity TextMeshPro to support writing Kanji.
 
-This plugin adds ruby tag support to "Text Mesh Pro" Unity plugin. 
+## Features
 
-`TextMeshPro`が必要なため、`Package Manager`からインストールしてください。
+- Realtime Ruby text preview.
+- Support both TextMeshPro (3D) and TextMeshProUGUI (UI).
 
-You need to have `TextMeshPro` plugin in your project. You can install TMPro via `Package Manager`.
+## How To Use
 
-チェックしたUnityバージョンとTextMeshProは以下の通りです。
+- Install this plugin via Package Manager Git URL:
 
-I checked Unity and TextMeshPro Version are below.
+  ```txt
+  https://github.com/kiraio-moe/RubyTextMeshPro.git?path=Assets/RubyTextMeshPro
+  ```
 
-UnityVer:2021.3.11f1 
+  or the classic way with `.unitypackage` from [Releases](https://github.com/kiraio-moe/RubyTextMeshPro/releases "Releases").  
+  If you install using `.unitypackage`, don't forget to install TextMeshPro via Package Manager.
 
-TextMeshProVer:3.0.6
+- Create new RubyTextMeshPro GameObject of your choice.
+- Start writing the Ruby tag.  
+  You can use `<ruby>` or `<r>` tag, both tags are valid.
 
-# Disruptive change
+  ```txt
+  <ruby=ice>fire</ruby>
+  <r=ice>fire</r>
+  ```
 
-### ver 1.1
+  It also work with double quotes:
 
-[Ja]
-削除 : `allVCompensationRuby` / `allVCompensationRubyLineHeight` : `rubyLineHeight` が空文字の場合、 いままでの `allVCompensationRuby:false` と同等の効果になります。また、 `rubyLineHeight` に値が入っている場合、 `allVCompensationRubyLineHeight` の値と同様の効果になります。
-削除予定 : `RubyTextMeshPro.UnditedText` / `RubyTextMeshProUGUI.UnditedText` : 次のバージョンで削除されます。`uneditedText`をご使用ください。
-
-[En]
-Removed : `allVCompensationRuby` / `allVCompensationRubyLineHeight` : If `rubyLineHeight` is an empty string, it will be the `allVCompensationRuby:false` value up to now, and if `rubyLineHeight` is a value, it will be the `allVCompensationRubyLineHeight` value.
-Obsolete : `RubyTextMeshPro.UnditedText` / `RubyTextMeshProUGUI.UnditedText` : Will be removed in the next version. Please use `uneditedText`.
-
-# Features
-### Realtime Ruby Text
-あなたは`<ruby=にほんご>日本語</ruby>`タグもしくは省略した`<r=にほんご>日本語</r>`タグを使用できます。
-また、半角ダブルクォーテーションで囲っても動作します。
-`<ruby="にほんご">日本語</ruby>`タグも`<r="にほんご">日本語</r>`タグもOKです。
-
-You can use `<ruby=ice>fire</ruby>` tag or `<r=ice>fire</r>` tag.  Both are the same.
-It can also work with double quotes.
-`<ruby="ice">fire</ruby>` tag or `<r="ice">fire</r>` tag.
-
-# How To Use
-* (1). あなたには`TextMeshPro`プラグインが必要です。`Package Manager`からインストールしてください。Asset StoreからのText Mesh Proのインストールはしないでください。
-* (1). You need to have `TextMeshPro` plugin in your project. You can install TMPro via `Package Manager`. DO NOT Install Text Mesh Pro from Asset Store.
-
-* (2). RubyTextMeshProディレクトリをコピーすれば使用可能です
-* (2). You can use it by copying the RubyTextMeshPro directory
+  ```txt
+  <ruby="ice">fire</ruby>
+  <r="ice">fire</r>
+  ```
 
 ![Example](https://github.com/jp-netsis/RubyTextMeshPro/blob/main/Screenshots/add_ruby.gif)
 
@@ -55,76 +44,66 @@ It can also work with double quotes.
 
 ### RubyShowType
 
-RUBY_ALIGNMENT ルビに合わせて文字を表示します
-
-BASE_ALIGNMENT 元の文字に合わせて文字を表示します
+- RUBY_ALIGNMENT: Display text according to the ruby.
+- BASE_ALIGNMENT: Display characters according to the original characters.
 
 ![Example](https://github.com/jp-netsis/RubyTextMeshPro/blob/main/Screenshots/align_width.gif)
 
 ### rubyLineHeight
-
-この機能により、rubyを使用しない場合でも、同じ隙間を持つことができます。
-この文字列を空にすることで、この機能はスキップされます。
 
 This function allows you to have the same gap even if you don't use ruby.
 Empty this string to skip this feature.
 
 ![Example](https://github.com/jp-netsis/RubyTextMeshPro/blob/main/Screenshots/vcompensation.gif)
 
-# Known Issues
-* (1).TextMeshPro のソースは改変していません。アラインでいくつか問題が起こります。
-* (1).TextMeshPro source has not changed. So text alignment is problematic.
+## Disruptive Changes
 
-* (2).ルビの最大文字数よりもテキストボックスを小さくしないでください。表示崩れが起きます。
-* (2).Do not make the text box smaller than the maximum number of characters in ruby. Display collapse will occur.
+### Version 1.1.0
 
-* (1)_1.'BASE_ALIGN'で左寄せの場合かつルビが行頭にありつつ元の文字より多い場合、枠の外まで表示されます
-* (1)_1.'BASE_ALIGN' setting is left align and the ruby is at the beginning of the line but more than the original character, it will be displayed outside the frame.
+- Removed:  
+  `allVCompensationRuby` / `allVCompensationRubyLineHeight` : If `rubyLineHeight` is an empty string, it will be the `allVCompensationRuby:false` value up to now, and if `rubyLineHeight` is a value, it will be the `allVCompensationRubyLineHeight` value.
 
-![Example](https://github.com/jp-netsis/RubyTextMeshPro/blob/main/Screenshots/issue_lefttop.png)
+Read more on [Changelogs](./CHANGELOG.md).
 
-* (1)_2.'BASE_ALIGN'で中央寄せの場合かつルビが元の文字より多い場合、中央に表示されません。 'RUBY_ALIGN' を使用すると解消される場合があります。
-* (1)_2.'BASE_ALIGN' setting is center align and the ruby is at more than the original character, can't displayed center. 'RUBY_ALIGN' used, it may be solved.
+## Known Issues
 
-![Example](https://github.com/jp-netsis/RubyTextMeshPro/blob/main/Screenshots/issue_base_alignment_center.png)
+1. TextMeshPro source has not changed. So text alignment is problematic.
+2. Do not make the text box smaller than the maximum number of characters in ruby. Display collapse will occur.
 
-* (1)_3.'BASE_ALIGN'で右寄せの場合かつルビが行頭にありつつ元の文字より多い場合、(1)_1と違い、枠の内まで表示されます
-* (1)_3.'BASE_ALIGN' setting is left align and the ruby is at the beginning of the line but more than the original character, Different from (1)_1 it will be displayed in the frame.
+3. `BASE_ALIGN` setting is left align and the ruby is at the beginning of the line but more than the original character, it will be displayed outside the frame.
 
-![Example](https://github.com/jp-netsis/RubyTextMeshPro/blob/main/Screenshots/issue_base_alignment_bottomright.png)
+  ![Example](https://github.com/jp-netsis/RubyTextMeshPro/blob/main/Screenshots/issue_lefttop.png)
 
-# Use Font File
+4. `BASE_ALIGN` setting is center align and the ruby is at more than the original character, can't displayed center. 'RUBY_ALIGN' used, it may be solved.
 
-Rounded M+
+  ![Example](https://github.com/jp-netsis/RubyTextMeshPro/blob/main/Screenshots/issue_base_alignment_center.png)
 
-http://jikasei.me/font/rounded-mplus
+5. `BASE_ALIGN` setting is left align and the ruby is at the beginning of the line but more than the original character, Different from number 3 it will be displayed in the frame.
 
-ありがとうございます！
+  ![Example](https://github.com/jp-netsis/RubyTextMeshPro/blob/main/Screenshots/issue_base_alignment_bottomright.png)
 
-Thank You!
+## Resources
 
-# Reference list
+**Used font**  
+[Rounded M+](http://jikasei.me/font/rounded-mplus "Rounded M+")
 
-https://forum.unity.com/threads/how-to-display-extra-little-characters-above-characters-in-a-text.387772/
-
-http://baba-s.hatenablog.com/entry/2019/01/10/122500
-
-ありがとうございます！
+**References**  
+- <https://forum.unity.com/threads/how-to-display-extra-little-characters-above-characters-in-a-text.387772/>
+- <http://baba-s.hatenablog.com/entry/2019/01/10/122500>
 
 Thank You!
 
-# Other
-* (1).TextMeshProは素晴らしいプラグインですので、rubyタグの追加はいつか行われるでしょう。そのときこのプロジェクトは削除します。
-* (1).TextMeshPro is very nice Plugin. If TextMeshPro add ruby tag well, delete my git project.
+## Notes
 
-* (2).日本語以外のチェックはしていません。
-* (2).Not checked anything other than Japanese
+- TextMeshPro is a very nice  plugin. If in the future they add ruby tag very well, we will delete this project.
+- Not checked anything other than Japanese.
 
-# Contribution
-
-すべての貢献を歓迎します。必ずプロジェクトのコードスタイルに従ってください。
+## Contributing
 
 All contributions are welcomed. Just make sure you follow the project's code style.  
 
 Contact: jenomoto@netsis.jp
 
+## License
+
+This project is licensed under [MIT License](/LICENSE "Read LICENSE file")
